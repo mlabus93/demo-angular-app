@@ -1,0 +1,18 @@
+<!-- TOP NAVBAR -->
+<div ui-view="header"></div>
+<div class="container-fluid" style="margin-top: 50px;">
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<!-- SIDEBAR -->
+			<aside ui-view="navbar"></aside>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<!-- MAIN -->
+			<section>
+				<div ui-view="content" autoscroll="false"></div>
+			</section>
+		</div>
+	</div>
+</div>
+<!-- FOOTER -->
+<!--<footer ui-view="footer" style="position: absolute; bottom: 0; width: 100%; height: 60px; background-color: #333;"></footer>-->

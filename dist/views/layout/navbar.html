@@ -1,0 +1,8 @@
+<!-- Navigation -->
+<div>
+	<ul class="nav nav-sidebar">
+		<li ng-repeat="item in menuItems" ng-class="{active: item.active}">
+			<a ng-click="NavbarCtrl.goToState(item.state)">{{item.displayName}}</a>
+		</li>
+	</ul>
+</div>

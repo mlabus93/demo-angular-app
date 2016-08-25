@@ -1,0 +1,17 @@
+<h1>Analytics</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+			<button class="btn btn-default pull-right" role="button" ui-sref="app.main.home">Back to Home</button>
+			<button class="btn btn-primary" role="button" ui-sref="app.main.analytics.graphs">Graphs</button>
+			<button class="btn btn-primary" role="button" ui-sref="app.main.analytics.tables">Tables</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<div ui-view=""></div>
+		</div>
+		<div class="col-sm-4">
+			<div ng-include="'dist/views/analytics/analytics-list.html'"></div>
+		</div>
+	</div>

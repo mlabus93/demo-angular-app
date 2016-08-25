@@ -1,0 +1,23 @@
+<button role="button" class="btn btn-default pull-right" ng-click="AnalyticsTableCtrl.refreshTable()">Refresh</button>
+<h4>Tables</h4>
+	<p>Table data goes here...</p>
+<div class="table-responsive">
+	<table ng-table="AnalyticsTableCtrl.table" class="table table-hover table-bordered table-striped">
+		<tbody>
+			<tr ng-repeat="item in $data">
+		  		<td data-title="'Name'" sortable="'name'">
+		  			<span ng-if="item.name">{{ item.name }}</span>
+		  			<span ng-if="!item.name" style="color:#DD1144; font-style: italic;">none</span>
+				</td>
+				<td data-title="'Color'" sortable="'color'">
+					<span ng-if="item.color">{{ item.color }}</span>
+					<span ng-if="!item.color" style="color:#DD1144; font-style: italic;">none</span>
+				</td>
+				<td data-title="'Shape'" sortable="'shape'">
+					<span ng-if="item.shape">{{ item.shape }}</span>
+					<span ng-if="!item.shape" style="color:#DD1144; font-style: italic;">none</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

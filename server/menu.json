@@ -1,0 +1,24 @@
+[
+	{
+		"displayName": "Home",
+		"state": "app.main.home"
+	},
+	{
+		"displayName": "Reports",
+		"state": "app.main.reports"
+	},
+	{
+		"displayName": "Analytics",
+		"state": "app.main.analytics.graphs",
+		"submenu": [
+			{
+				"displayName": "Graphs",
+				"state": "app.main.analytics.graphs"
+			},
+			{
+				"displayName": "Tables",
+				"state": "app.main.analytics.tables"
+			}
+		]
+	}
+]

@@ -1,0 +1,6 @@
+[
+	"bower_components/angular-treetable/dist/angular-treetable.min.js",
+	"bower_components/angular-tree-control/angular-tree-control.js",
+	"bower_components/ng-table/dist/ng-table.js",
+	"bower_components/ng-table/dist/ng-table.css"
+]

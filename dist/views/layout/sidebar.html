@@ -1,0 +1,20 @@
+<!-- Navigation -->
+<div>
+    <nav class="navbar" ng-class="(navbar.isOpen) ? '' : 'navbar-min'" role="navigation">
+        <div class="menu-item-container" ng-repeat="menuitem in menuitems">
+            <div class="menu-item" ng-class="{'menu-item-active': menuitem.active, 'menu-item-navbar-min': !navbar.isOpen}" ng-click="handleMenuAction(menuitem)" ng-mouseover="toggleMenuAction(menuitem, true, $event)" ng-mouseleave="toggleMenuAction(menuitem, false)" ng-show="menuitem.show">
+                <span class='menuitem-icon' ng-class='lookupIconClass(menuitem)' ng-mouseover="$event.stopPropagation()" ng-mouseleave="$event.stopPropagation()"></span>
+                <div class='menuitem-label-container'>
+                    <span class='menuitem-label' ng-show='navbar.isOpen' ng-mouseover="$event.stopPropagation()" ng-mouseleave="$event.stopPropagation()">{{menuitem.label}}</span>
+                </div>
+                <span class='menuitem-expand-icon fi-triangle' ng-class="{'menuitem-expand-icon-active': menuitem.active}" ng-show='menuitem.submenu !== undefined && navbar.isOpen'></span>
+            </div>                    
+        </div>
+    </nav>
+    <div class="submenu-beta" ng-class="(navbar.isOpen) ? '' : 'submenu-beta-navbar-min'" ng-show="navbar.submenu.isOpen" ng-mouseover="keepShowingSubmenu()" ng-mouseleave="hideSubmenu()">
+        <div class="submenu-title" ng-mouseover="keepShowingSubmenu()"><span>{{navbar.submenu.menuitem.label}}</span></div>
+        <div class="submenu-item" ng-repeat="submenuitem in navbar.submenu.menuitem.submenu" ng-mouseover="keepShowingSubmenu()">
+            <a ui-sref="{{submenuitem.route}}" ng-show="submenuitem.hasAuthorization" ng-click="navbar.showSubmenuData(submenuitem)">{{submenuitem.label}}</a>
+        </div>
+    </div>
+</div>
