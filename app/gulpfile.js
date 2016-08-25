@@ -13,7 +13,6 @@ var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
 var cssImport = require('gulp-cssimport');
 var clean = require('gulp-clean');
-var stringify = require('stringify');
 var concat = require('gulp-concat');
 var less = require('gulp-less');
 var path = require('path');
@@ -22,30 +21,15 @@ var watch = require('gulp-watch');
 var env = require('gulp-env');
 var exit = require('gulp-exit');
 var Server = require('karma').Server;
-var File = require('vinyl');
 
-//for use with watchify, gulp-browserify doesn't seem to be compatible with watchify
-var browserify = require('browserify');
-var browserifyHandlebars = require("browserify-handlebars")
+
 var minifyify = require("minifyify")
-
-var watchify = require('watchify');
-var source = require('vinyl-source-stream');
 var gutil = require('gulp-util');
 var jsoncombine = require("gulp-jsoncombine");
 
 //for validating JSON files
 //npm install --save-dev gulp-jsonlint
 var jsonlint = require('gulp-jsonlint');
-
-var browserifyOpts = {
-   insertGlobals : true,
-   debug : true,
-   transform : [browserifyHandlebars, "browserify-shim"],
-   //for watchify
-   cache: {},
-   packageCache: {}
-};
 
 // MAIN PATHS
 var paths = {
@@ -290,29 +274,5 @@ gulp.task('less', function () {
     .pipe(gp.cssImport())
     .pipe(gp.rename('vts-style.css'))
     .pipe(gulp.dest('./app/css/'));
-});
-
-gulp.task("i18n-pseudo-locale", function() {
-    return gulp.src("./app/languages/locale-en_US.json")
-        .pipe(jsoncombine("locale-rv_US.json", function(data) {
-            var originalJson = data["locale-en_US"];
-            function processJson(json) {
-                // Leaf node
-                if (typeof(json) === "string") {
-					var jsonReverse ='';
-					  for (var i = json.length - 1; i >= 0; i--)
-						jsonReverse += json[i];
-                    return "\u4ECF" + jsonReverse;
-                }
-                // object
-                for(var propertyName in json) {
-                    json[propertyName] = processJson(json[propertyName]);
-                }
-                return json;
-            }
-            finalJson = processJson(originalJson);
-            return new Buffer(JSON.stringify(finalJson));
-         }))
-        .pipe(gulp.dest("dist/languages"));
 });
 

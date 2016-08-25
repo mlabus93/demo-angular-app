@@ -55,14 +55,14 @@
 (function() {
 	'use strict';
 
-	angular.module('app.utils', [
+	angular.module('app.reports', [
 		'app.core'
 	]);
 })();
 (function() {
 	'use strict';
 
-	angular.module('app.reports', [
+	angular.module('app.utils', [
 		'app.core'
 	]);
 })();
@@ -86,16 +86,16 @@
 (function() {
 	'use strict';
 
+	angular.module('blocks.translate', []);
+})();
+(function() {
+	'use strict';
+
 	angular.module('blocks.router', [
 		'blocks.logger',
 		'blocks.lazyload',
 		'blocks.exception'
 	]);
-})();
-(function() {
-	'use strict';
-
-	angular.module('blocks.translate', []);
 })();
 (function() {
 	'use strict';
@@ -440,6 +440,28 @@
 (function() {
 	'use strict';
 
+	TranslateConfig.$inject = ["$translateProvider"];
+	angular
+		.module('blocks.translate')
+		.config(TranslateConfig);
+
+	/* ngInject */
+	function TranslateConfig($translateProvider) {
+		$translateProvider.useStaticFilesLoader({
+			prefix: 'dist/i18n/locale-',
+			suffix: '.json'
+		});
+
+		$translateProvider.preferredLanguage('en_US');
+
+		//$translateProvider.useLocalStorage();
+
+		//$translateProvider.useSanitizeValuesStrategy('escaped');
+	}
+})();
+(function() {
+	'use strict';
+
 	angular
 		.module('blocks.router')
 		.provider('RouteHelper', RouteHelperProvider);
@@ -647,27 +669,5 @@
 				RouteStateSvc.setActiveState(toState.name);
 			}
 		});
-	}
-})();
-(function() {
-	'use strict';
-
-	TranslateConfig.$inject = ["$translateProvider"];
-	angular
-		.module('blocks.translate')
-		.config(TranslateConfig);
-
-	/* ngInject */
-	function TranslateConfig($translateProvider) {
-		$translateProvider.useStaticFilesLoader({
-			prefix: 'dist/i18n/locale-',
-			suffix: '.json'
-		});
-
-		$translateProvider.preferredLanguage('en_US');
-
-		//$translateProvider.useLocalStorage();
-
-		//$translateProvider.useSanitizeValuesStrategy('escaped');
 	}
 })();
