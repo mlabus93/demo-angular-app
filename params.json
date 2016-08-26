@@ -1,6 +1,6 @@
 {
   "name": "Demo Angular App",
   "tagline": "Demo app with best practices for angular 1.x",
-  "body": "# VTS GUI Coding Guidelines\r\n\r\n## Table of Contents\r\n\r\n1. [Naming Conventions](#naming-conventions)\r\n1. [Modules](#modules)\r\n1. [Tests](#tests)\r\n\r\n## Naming Conventions\r\nThe naming conventions go here.\r\n\r\n## Modules\r\nThis is the module section.\r\n\r\n## Tests\r\nThis is the tests section.\r\n\r\n### Authors and Contributors\r\nMike Labus (@mlabus93)",
+  "body": "# VTS GUI Coding Guidelines\r\n\r\n## Table of Contents\r\n\r\n1. [Naming Conventions](#naming-conventions)\r\n1. [Modules](#modules)\r\n1. [Controllers](#controllers)\r\n1. [Services](#services)\r\n1. [Directives](#directives)\r\n1. [Tests](#tests)\r\n\r\n## Naming Conventions\r\nThe naming conventions go here.\r\n\r\n## Modules\r\nThis is the module section.\r\n\r\n## Controllers\r\nThis is the controllers section.\r\n\r\n## Services\r\nThis is the services section.\r\n\r\n## Directives\r\nThis is the directives section.\r\n\r\n## Tests\r\nThis is the tests section.\r\n\r\n### Authors and Contributors\r\nMike Labus (@mlabus93)",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
