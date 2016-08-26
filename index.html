@@ -37,7 +37,40 @@
 <h2>
 <a id="naming-conventions" class="anchor" href="#naming-conventions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Naming Conventions</h2>
 
-<p>The naming conventions go here.</p>
+<p>All naming should describe the specific component or file being used.</p>
+
+<h3>
+<a id="components" class="anchor" href="#components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Components</h3>
+
+<ul>
+<li>
+<p>Controllers and Services should be named in Pascal case and suffixed with their respective component type</p>
+
+<blockquote>
+<p>ExampleCtrl, SomeTestSvc</p>
+</blockquote>
+</li>
+<li><p>Module names should be camel cased<br>
+<code>angular.module('someTestApp', []);</code></p></li>
+<li>Submodules should be prefixed with their parent module using dot syntax<br>
+<code>angular.module('app', ['app.routes']);</code>
+</li>
+</ul>
+
+<h3>
+<a id="files" class="anchor" href="#files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Files</h3>
+
+<ul>
+<li>All files should be lowercase and hyphenated for each cased word</li>
+<li>
+<p>For Angular files, suffix the file with the type of component it is</p>
+
+<blockquote>
+<p>ExampleCtrl should be named example.ctrl.js<br>
+SomeTestSvc should be named some-test.svc.js</p>
+</blockquote>
+</li>
+</ul>
 
 <h2>
 <a id="modules" class="anchor" href="#modules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Modules</h2>
