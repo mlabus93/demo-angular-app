@@ -23,6 +23,20 @@
 (function() {
 	'use strict';
 
+	angular.module('app.reports', [
+		'app.core'
+	]);
+})();
+(function() {
+	'use strict';
+
+	angular.module('app.utils', [
+		'app.core'
+	]);
+})();
+(function() {
+	'use strict';
+
 	angular.module('app.core', [
 		// Angular modules
 		//'ngAnimate',
@@ -41,6 +55,11 @@
 (function() {
 	'use strict';
 
+	angular.module('blocks.lazyload', []);
+})();
+(function() {
+	'use strict';
+
 	angular.module('app.home', [
 		'app.core'
 	]);
@@ -55,28 +74,9 @@
 (function() {
 	'use strict';
 
-	angular.module('app.reports', [
-		'app.core'
-	]);
-})();
-(function() {
-	'use strict';
-
-	angular.module('app.utils', [
-		'app.core'
-	]);
-})();
-(function() {
-	'use strict';
-
 	angular.module('blocks.exception', [
 		'blocks.logger'
 	]);
-})();
-(function() {
-	'use strict';
-
-	angular.module('blocks.lazyload', []);
 })();
 (function() {
 	'use strict';
@@ -184,6 +184,41 @@
 		// Configure common exception handler
 		exceptionHandlerProvider.configure(config.appErrorPrefix);
 	}
+})();
+(function() {
+	'use strict';
+
+	LazyLoadConfig.$inject = ["$ocLazyLoadProvider", "APP_REQUIRES"];
+	angular
+		.module('blocks.lazyload')
+		.config(LazyLoadConfig);
+
+	/* ngInject */
+	function LazyLoadConfig($ocLazyLoadProvider, APP_REQUIRES) {
+		// modules configuration
+		$ocLazyLoadProvider.config({
+			debug: false,
+			events: true,
+			modules: APP_REQUIRES.modules
+		});
+	}
+})();
+(function() {
+	'use strict';
+
+	angular
+		.module('blocks.lazyload')
+		.constant('APP_REQUIRES', {
+			// stand-alone scripts go here
+			scripts: {
+			},
+			// angular based scripts
+			modules: [
+				{name: 'angularTreetable',			files: ['vendor/angular-treetable/dist/angular-treetable.min.js']},
+				{name: 'ngTable',					files: ['vendor/ng-table/dist/ng-table.js',
+															'vendor/ng-table/dist/ng-table.css']}
+			]
+		});
 })();
 (function() {
 	'use strict';
@@ -364,41 +399,6 @@
 			};
 		}
 	}
-})();
-(function() {
-	'use strict';
-
-	LazyLoadConfig.$inject = ["$ocLazyLoadProvider", "APP_REQUIRES"];
-	angular
-		.module('blocks.lazyload')
-		.config(LazyLoadConfig);
-
-	/* ngInject */
-	function LazyLoadConfig($ocLazyLoadProvider, APP_REQUIRES) {
-		// modules configuration
-		$ocLazyLoadProvider.config({
-			debug: false,
-			events: true,
-			modules: APP_REQUIRES.modules
-		});
-	}
-})();
-(function() {
-	'use strict';
-
-	angular
-		.module('blocks.lazyload')
-		.constant('APP_REQUIRES', {
-			// stand-alone scripts go here
-			scripts: {
-			},
-			// angular based scripts
-			modules: [
-				{name: 'angularTreetable',			files: ['vendor/angular-treetable/dist/angular-treetable.min.js']},
-				{name: 'ngTable',					files: ['vendor/ng-table/dist/ng-table.js',
-															'vendor/ng-table/dist/ng-table.css']}
-			]
-		});
 })();
 (function() {
 	'use strict';
