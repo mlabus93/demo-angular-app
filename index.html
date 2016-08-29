@@ -165,7 +165,36 @@
     .<span class="pl-en">controller</span>(<span class="pl-s"><span class="pl-pds">'</span>HomeCtrl<span class="pl-pds">'</span></span>, HomeCtrl);
 
   <span class="pl-k">function</span> <span class="pl-en">HomeCtrl</span>() {
+    <span class="pl-k">var</span> vm <span class="pl-k">=</span> <span class="pl-v">this</span>; <span class="pl-c">//vm is short for view model</span>
+  }</pre></div>
+</li>
+<li><p>Bindable members should be kept at the top with function definitions placed below in alphabetical order.</p></li>
+<li>
+<p>An 'activate' or 'init' function should be specified for controllers that need to perform work upon initialization.</p>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">ExampleCtrl</span>.<span class="pl-smi">$inject</span> <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>SomeSvc<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>FilterSvc<span class="pl-pds">'</span></span>];
+  <span class="pl-k">function</span> <span class="pl-en">ExampleCtrl</span>(<span class="pl-smi">SomeSvc</span>, <span class="pl-smi">FilterSvc</span>) {
     <span class="pl-k">var</span> vm <span class="pl-k">=</span> <span class="pl-v">this</span>;
+    <span class="pl-smi">vm</span>.<span class="pl-smi">items</span> <span class="pl-k">=</span> [];
+    <span class="pl-smi">vm</span>.<span class="pl-c1">value</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;
+    <span class="pl-c">// binded functions</span>
+    <span class="pl-smi">vm</span>.<span class="pl-smi">doTask</span> <span class="pl-k">=</span> doTask;
+    <span class="pl-smi">vm</span>.<span class="pl-smi">filterItems</span> <span class="pl-k">=</span> filterItems;
+
+    <span class="pl-en">activate</span>();
+
+    <span class="pl-k">function</span> <span class="pl-en">activate</span>() {
+      <span class="pl-smi">SomeSvc</span>.<span class="pl-en">doSomethingInitially</span>();
+    }
+
+    <span class="pl-k">function</span> <span class="pl-en">doTask</span>() {
+      <span class="pl-smi">vm</span>.<span class="pl-c1">value</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Task completed<span class="pl-pds">'</span></span>;
+    }
+
+    <span class="pl-k">function</span> <span class="pl-en">filterItems</span>() {
+      <span class="pl-k">var</span> filteredList <span class="pl-k">=</span> <span class="pl-smi">FilterSvc</span>.<span class="pl-en">filterItemList</span>(<span class="pl-smi">vm</span>.<span class="pl-smi">items</span>);
+      <span class="pl-smi">vm</span>.<span class="pl-smi">items</span> <span class="pl-k">=</span> filteredList;
+    }
   }</pre></div>
 </li>
 </ul>
