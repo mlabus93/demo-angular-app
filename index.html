@@ -148,7 +148,7 @@
 <span class="pl-s">  &lt;/div&gt;</span></pre></div>
 </li>
 <li>
-<p>Use the ui-router to assign controllers to views.</p>
+<p>Use the ui-router to assign controllers to views. If no route is associated with the view, then use the above 'ng-controller' directive.</p>
 
 <div class="highlight highlight-source-js"><pre>  .<span class="pl-en">state</span>(<span class="pl-s"><span class="pl-pds">'</span>app.home<span class="pl-pds">'</span></span>, {
     url<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/home<span class="pl-pds">'</span></span>,
@@ -168,13 +168,14 @@
     <span class="pl-k">var</span> vm <span class="pl-k">=</span> <span class="pl-v">this</span>; <span class="pl-c">//vm is short for view model</span>
   }</pre></div>
 </li>
-<li><p>Bindable members should be kept at the top with function definitions placed below in alphabetical order.</p></li>
+<li><p>Bindable members should be kept at the top with function definitions placed below in alphabetical order for readability.</p></li>
 <li>
 <p>An 'activate' or 'init' function should be specified for controllers that need to perform work upon initialization.</p>
 
 <div class="highlight highlight-source-js"><pre>  <span class="pl-smi">ExampleCtrl</span>.<span class="pl-smi">$inject</span> <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>SomeSvc<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>FilterSvc<span class="pl-pds">'</span></span>];
   <span class="pl-k">function</span> <span class="pl-en">ExampleCtrl</span>(<span class="pl-smi">SomeSvc</span>, <span class="pl-smi">FilterSvc</span>) {
     <span class="pl-k">var</span> vm <span class="pl-k">=</span> <span class="pl-v">this</span>;
+    <span class="pl-smi">vm</span>.<span class="pl-smi">filteredItems</span> <span class="pl-k">=</span> [];
     <span class="pl-smi">vm</span>.<span class="pl-smi">items</span> <span class="pl-k">=</span> [];
     <span class="pl-smi">vm</span>.<span class="pl-c1">value</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;
     <span class="pl-c">// binded functions</span>
@@ -192,8 +193,7 @@
     }
 
     <span class="pl-k">function</span> <span class="pl-en">filterItems</span>() {
-      <span class="pl-k">var</span> filteredList <span class="pl-k">=</span> <span class="pl-smi">FilterSvc</span>.<span class="pl-en">filterItemList</span>(<span class="pl-smi">vm</span>.<span class="pl-smi">items</span>);
-      <span class="pl-smi">vm</span>.<span class="pl-smi">items</span> <span class="pl-k">=</span> filteredList;
+      <span class="pl-smi">vm</span>.<span class="pl-smi">filteredItems</span> <span class="pl-k">=</span> <span class="pl-smi">FilterSvc</span>.<span class="pl-en">filterItemList</span>(<span class="pl-smi">vm</span>.<span class="pl-smi">items</span>);
     }
   }</pre></div>
 </li>
