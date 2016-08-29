@@ -52,9 +52,10 @@
 </li>
 <li><p>Module names should be camel cased<br>
 <code>angular.module('someTestApp', []);</code></p></li>
-<li>Submodules should be prefixed with their parent module using dot syntax<br>
-<code>angular.module('app', ['app.routes']);</code>
-</li>
+<li><p>Submodules should be prefixed with their parent module using dot syntax<br>
+<code>angular.module('app', ['app.routes']);</code></p></li>
+<li><p>Directives should be prefixed to avoid collisions with future  html or angular specs<br>
+<code>.directive('vtcCarousel', vtcCarousel) &lt;vtc-carousel&gt; &lt;/vtc-carousel&gt;</code></p></li>
 </ul>
 
 <h3>
@@ -66,8 +67,23 @@
 <p>For Angular files, suffix the file with the type of component it is</p>
 
 <blockquote>
-<p>ExampleCtrl should be named example.ctrl.js<br>
-SomeTestSvc should be named some-test.svc.js</p>
+<p>'ExampleCtrl' should be named example.ctrl.js<br>
+ 'SomeTestSvc' should be named some-test.svc.js<br>
+'app' module should be named app.module.js</p>
+</blockquote>
+</li>
+<li>
+<p>Submodules should leave out the prefix during file naming</p>
+
+<blockquote>
+<p>'app.routes' should be named routes.module.js</p>
+</blockquote>
+</li>
+<li>
+<p>Config blocks should be named based off of their module name</p>
+
+<blockquote>
+<p>'exampleModule' should have a config file named example-module.config.js</p>
 </blockquote>
 </li>
 </ul>
