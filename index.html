@@ -27,6 +27,7 @@
 
 <ol>
 <li><a href="#naming-conventions">Naming Conventions</a></li>
+<li><a href="#project-organization">Project Organization</a></li>
 <li><a href="#modules">Modules</a></li>
 <li><a href="#controllers">Controllers</a></li>
 <li><a href="#services">Services</a></li>
@@ -44,17 +45,17 @@
 
 <ul>
 <li>
-<p>Controllers and Services should be named in Pascal case and suffixed with their respective component type</p>
+<p>Controllers and Services should be named in Pascal case and suffixed with their respective component type.</p>
 
 <blockquote>
 <p>ExampleCtrl, SomeTestSvc</p>
 </blockquote>
 </li>
-<li><p>Module names should be camel cased<br>
+<li><p>Module names should be camel cased.<br>
 <code>angular.module('someTestApp', []);</code></p></li>
-<li><p>Submodules should be prefixed with their parent module using dot syntax<br>
+<li><p>Submodules should be prefixed with their parent module using dot syntax.<br>
 <code>angular.module('app', ['app.routes']);</code></p></li>
-<li><p>Directives should be prefixed to avoid collisions with future  html or angular specs<br>
+<li><p>Directives should be prefixed to avoid collisions with future html or angular specs.<br>
 <code>.directive('vtcCarousel', vtcCarousel) &lt;vtc-carousel&gt; &lt;/vtc-carousel&gt;</code></p></li>
 </ul>
 
@@ -62,9 +63,9 @@
 <a id="files" class="anchor" href="#files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Files</h3>
 
 <ul>
-<li>All files should be lowercase and hyphenated for each cased word</li>
+<li>All files should be lowercase and hyphenated for each cased word.</li>
 <li>
-<p>For Angular files, suffix the file with the type of component it is</p>
+<p>For Angular files, suffix the file with the type of component it is.</p>
 
 <blockquote>
 <p>'ExampleCtrl' should be named example.ctrl.js<br>
@@ -73,14 +74,14 @@
 </blockquote>
 </li>
 <li>
-<p>Submodules should leave out the prefix during file naming</p>
+<p>Submodules should leave out the prefix during file naming.</p>
 
 <blockquote>
 <p>'app.routes' should be named routes.module.js</p>
 </blockquote>
 </li>
 <li>
-<p>Config blocks should be named based off of their module name</p>
+<p>Config blocks should be named based off of their module name.</p>
 
 <blockquote>
 <p>'exampleModule' should have a config file named example-module.config.js</p>
@@ -89,9 +90,39 @@
 </ul>
 
 <h2>
+<a id="project-organization" class="anchor" href="#project-organization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Organization</h2>
+
+<ul>
+<li><p>There should be a working directory for app development and a directory specific for dist.</p></li>
+<li><p>Inside of the working directory, there should be a folder for features of the project. This folder contains subfolders for all the features and each feature should have it's own module.</p></li>
+<li><p>All of the components (controllers, services, config, etc.) and markup (html) of the module should be kept in the specific feature's directory.</p></li>
+<li><p>Each component should exist in it's own file independent of other components. The only exceptions would be including run blocks after a config or providers with config.</p></li>
+<li>
+<p>Each angular component file should be wrapped in an IIFE (Immediately Invoked Function Expression) to avoid pollution to the global scope. Additionally, use strict mode inside of each angular component file.</p>
+
+<div class="highlight highlight-source-js"><pre>  (<span class="pl-k">function</span>() {
+    <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
+  })();</pre></div>
+</li>
+</ul>
+
+<h2>
 <a id="modules" class="anchor" href="#modules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Modules</h2>
 
-<p>This is the module section.</p>
+<ul>
+<li>
+<p>Modules should be defined with setter syntax.</p>
+
+<p><code>angular.module('app', []);</code></p>
+</li>
+<li>
+<p>Modules should be retrieved with getter syntax.</p>
+
+<div class="highlight highlight-source-js"><pre>  angular
+    .<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span>)
+    .<span class="pl-en">controller</span>(<span class="pl-s"><span class="pl-pds">'</span>AttachedToAppCtrl<span class="pl-pds">'</span></span>, AttachedToAppCtrl);</pre></div>
+</li>
+</ul>
 
 <h2>
 <a id="controllers" class="anchor" href="#controllers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Controllers</h2>
