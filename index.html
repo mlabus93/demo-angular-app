@@ -133,7 +133,42 @@
 <h2>
 <a id="controllers" class="anchor" href="#controllers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Controllers</h2>
 
-<p>This is the controllers section.</p>
+<ul>
+<li><p>Controllers should be used as 'the glue' between your view model. Logic in controllers should be extracted and placed inside of a service.</p></li>
+<li>
+<p>Use the 'controller as' syntax for views. Explicit naming in the view allows easy identification of a controller context, especially when controllers are nested.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>  &lt;<span class="pl-ent">div</span> <span class="pl-e">ng-controller</span>=<span class="pl-s"><span class="pl-pds">"</span>SomeCtrl as SomeCtrl<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">h1</span>&gt;{{ SomeCtrl.title }}&lt;/<span class="pl-ent">h1</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">ng-controller</span>=<span class="pl-s"><span class="pl-pds">"</span>NestedCtrl as NestedCtrl&gt;</span>
+<span class="pl-s">      &lt;input ng-model=<span class="pl-pds">"</span></span><span class="pl-e">NestedCtrl</span>.<span class="pl-e">value</span><span class="pl-s"><span class="pl-pds">"</span>/&gt;</span>
+<span class="pl-s">      &lt;h5&gt;{{ NestedCtrl.value }}&lt;/h5&gt;</span>
+<span class="pl-s">      &lt;p&gt;{{ SomeCtrl.valueFromParent }}&lt;/p&gt;</span>
+<span class="pl-s">    &lt;/div&gt;</span>
+<span class="pl-s">  &lt;/div&gt;</span></pre></div>
+</li>
+<li>
+<p>Use the ui-router to assign controllers to views.</p>
+
+<div class="highlight highlight-source-js"><pre>  .<span class="pl-en">state</span>(<span class="pl-s"><span class="pl-pds">'</span>app.home<span class="pl-pds">'</span></span>, {
+    url<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/home<span class="pl-pds">'</span></span>,
+    templateUrl<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/home.html<span class="pl-pds">'</span></span>,
+    controller<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>HomeCtrl<span class="pl-pds">'</span></span>,
+    controllerAs<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>HomeCtrl<span class="pl-pds">'</span></span>
+  });</pre></div>
+</li>
+<li>
+<p>Use 'controller as' syntax for controller js by binding 'this' to a variable (this isn't used directly because of lexical issues in javascript). This helps prevent the urge to bind everything to $scope.</p>
+
+<div class="highlight highlight-source-js"><pre>  angular
+    .<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app.home<span class="pl-pds">'</span></span>)
+    .<span class="pl-en">controller</span>(<span class="pl-s"><span class="pl-pds">'</span>HomeCtrl<span class="pl-pds">'</span></span>, HomeCtrl);
+
+  <span class="pl-k">function</span> <span class="pl-en">HomeCtrl</span>() {
+    <span class="pl-k">var</span> vm <span class="pl-k">=</span> <span class="pl-v">this</span>;
+  }</pre></div>
+</li>
+</ul>
 
 <h2>
 <a id="services" class="anchor" href="#services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Services</h2>
