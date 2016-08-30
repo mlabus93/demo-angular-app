@@ -4,6 +4,9 @@
 
 This is a demo application for using best practices in Angular 1.x
 
+# Coding Guidelines
+https://mlabus93.github.io/demo-angular-app/
+
 ## Installing
 
 - Change into the demo-angular-app directory
