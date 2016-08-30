@@ -37,7 +37,7 @@
 <li><a href="#controllers">Controllers</a></li>
 <li><a href="#services-and-factories">Services and Factories</a></li>
 <li><a href="#directives">Directives</a></li>
-<li><a href="#tests">Tests</a></li>
+<li><a href="#unit-tests">Unit Tests</a></li>
 </ol>
 
 <h2>
@@ -277,9 +277,19 @@
 </ul>
 
 <h2>
-<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tests</h2>
+<a id="unit-tests" class="anchor" href="#unit-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unit Tests</h2>
 
-<p>This is the tests section.</p>
+<ul>
+<li>
+<p>Each angular component file should have it's own test associated with it.  </p>
+
+<blockquote>
+<p>example.ctrl.js with test file example.ctrl.spec.js</p>
+</blockquote>
+</li>
+<li><p>All test files should use the Jasmine testing framework and should be written in BDD/TDD style.</p></li>
+<li><p>Each unit test should test the specified component in isolation, with injected dependencies being mocked.</p></li>
+</ul>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
