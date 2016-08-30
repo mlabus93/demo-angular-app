@@ -56,11 +56,11 @@
 			})
 			.state('app.main.analytics.graphs', {
 				url: '/graphs',
-				templateUrl: RouteHelper.config.basepath('analytics/analytics-graphs.html')
+				templateUrl: RouteHelper.config.basepath('analytics/analyticsGraphs.html')
 			})
 			.state('app.main.analytics.tables', {
 				url: '/tables',
-				templateUrl: RouteHelper.config.basepath('analytics/analytics-tables.html'),
+				templateUrl: RouteHelper.config.basepath('analytics/analyticsTable.html'),
 				controller: 'AnalyticsTableCtrl',
 				controllerAs: 'AnalyticsTableCtrl',
 				resolve: RouteHelper.config.resolveFor('ngTable')

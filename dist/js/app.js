@@ -23,20 +23,6 @@
 (function() {
 	'use strict';
 
-	angular.module('app.reports', [
-		'app.core'
-	]);
-})();
-(function() {
-	'use strict';
-
-	angular.module('app.utils', [
-		'app.core'
-	]);
-})();
-(function() {
-	'use strict';
-
 	angular.module('app.core', [
 		// Angular modules
 		//'ngAnimate',
@@ -55,12 +41,14 @@
 (function() {
 	'use strict';
 
-	angular.module('blocks.lazyload', []);
+	angular.module('app.home', [
+		'app.core'
+	]);
 })();
 (function() {
 	'use strict';
 
-	angular.module('app.home', [
+	angular.module('app.reports', [
 		'app.core'
 	]);
 })();
@@ -74,9 +62,21 @@
 (function() {
 	'use strict';
 
+	angular.module('app.utils', [
+		'app.core'
+	]);
+})();
+(function() {
+	'use strict';
+
 	angular.module('blocks.exception', [
 		'blocks.logger'
 	]);
+})();
+(function() {
+	'use strict';
+
+	angular.module('blocks.lazyload', []);
 })();
 (function() {
 	'use strict';
@@ -86,16 +86,16 @@
 (function() {
 	'use strict';
 
-	angular.module('blocks.translate', []);
-})();
-(function() {
-	'use strict';
-
 	angular.module('blocks.router', [
 		'blocks.logger',
 		'blocks.lazyload',
 		'blocks.exception'
 	]);
+})();
+(function() {
+	'use strict';
+
+	angular.module('blocks.translate', []);
 })();
 (function() {
 	'use strict';
@@ -184,41 +184,6 @@
 		// Configure common exception handler
 		exceptionHandlerProvider.configure(config.appErrorPrefix);
 	}
-})();
-(function() {
-	'use strict';
-
-	LazyLoadConfig.$inject = ["$ocLazyLoadProvider", "APP_REQUIRES"];
-	angular
-		.module('blocks.lazyload')
-		.config(LazyLoadConfig);
-
-	/* ngInject */
-	function LazyLoadConfig($ocLazyLoadProvider, APP_REQUIRES) {
-		// modules configuration
-		$ocLazyLoadProvider.config({
-			debug: false,
-			events: true,
-			modules: APP_REQUIRES.modules
-		});
-	}
-})();
-(function() {
-	'use strict';
-
-	angular
-		.module('blocks.lazyload')
-		.constant('APP_REQUIRES', {
-			// stand-alone scripts go here
-			scripts: {
-			},
-			// angular based scripts
-			modules: [
-				{name: 'angularTreetable',			files: ['vendor/angular-treetable/dist/angular-treetable.min.js']},
-				{name: 'ngTable',					files: ['vendor/ng-table/dist/ng-table.js',
-															'vendor/ng-table/dist/ng-table.css']}
-			]
-		});
 })();
 (function() {
 	'use strict';
@@ -339,6 +304,28 @@
 (function() {
 	'use strict';
 
+	ExceptionSvc.$inject = ["LoggerSvc"];
+	angular
+		.module('blocks.exception')
+		.factory('ExceptionSvc', ExceptionSvc);
+
+	/* ngInject */
+	function ExceptionSvc(LoggerSvc) {
+		var service = {
+			catcher: catcher
+		};
+		return service;
+
+		function catcher(message) {
+			return function(reason) {
+				LoggerSvc.error(message, reason);
+			};
+		}
+	}
+})();
+(function() {
+	'use strict';
+
 	config.$inject = ["$provide"];
 	extendExceptionHandler.$inject = ["$delegate", "exceptionHandler", "LoggerSvc"];
 	angular
@@ -381,24 +368,37 @@
 (function() {
 	'use strict';
 
-	ExceptionSvc.$inject = ["LoggerSvc"];
+	LazyLoadConfig.$inject = ["$ocLazyLoadProvider", "APP_REQUIRES"];
 	angular
-		.module('blocks.exception')
-		.factory('ExceptionSvc', ExceptionSvc);
+		.module('blocks.lazyload')
+		.config(LazyLoadConfig);
 
 	/* ngInject */
-	function ExceptionSvc(LoggerSvc) {
-		var service = {
-			catcher: catcher
-		};
-		return service;
-
-		function catcher(message) {
-			return function(reason) {
-				LoggerSvc.error(message, reason);
-			};
-		}
+	function LazyLoadConfig($ocLazyLoadProvider, APP_REQUIRES) {
+		// modules configuration
+		$ocLazyLoadProvider.config({
+			debug: false,
+			events: true,
+			modules: APP_REQUIRES.modules
+		});
 	}
+})();
+(function() {
+	'use strict';
+
+	angular
+		.module('blocks.lazyload')
+		.constant('APP_REQUIRES', {
+			// stand-alone scripts go here
+			scripts: {
+			},
+			// angular based scripts
+			modules: [
+				{name: 'angularTreetable',			files: ['vendor/angular-treetable/dist/angular-treetable.min.js']},
+				{name: 'ngTable',					files: ['vendor/ng-table/dist/ng-table.js',
+															'vendor/ng-table/dist/ng-table.css']}
+			]
+		});
 })();
 (function() {
 	'use strict';
@@ -435,28 +435,6 @@
 		function warning(message, data, title) {
 			$log.warn('Warning: ' + message, data);
 		}
-	}
-})();
-(function() {
-	'use strict';
-
-	TranslateConfig.$inject = ["$translateProvider"];
-	angular
-		.module('blocks.translate')
-		.config(TranslateConfig);
-
-	/* ngInject */
-	function TranslateConfig($translateProvider) {
-		$translateProvider.useStaticFilesLoader({
-			prefix: 'dist/i18n/locale-',
-			suffix: '.json'
-		});
-
-		$translateProvider.preferredLanguage('en_US');
-
-		//$translateProvider.useLocalStorage();
-
-		//$translateProvider.useSanitizeValuesStrategy('escaped');
 	}
 })();
 (function() {
@@ -637,11 +615,11 @@
 			})
 			.state('app.main.analytics.graphs', {
 				url: '/graphs',
-				templateUrl: RouteHelper.config.basepath('analytics/analytics-graphs.html')
+				templateUrl: RouteHelper.config.basepath('analytics/analyticsGraphs.html')
 			})
 			.state('app.main.analytics.tables', {
 				url: '/tables',
-				templateUrl: RouteHelper.config.basepath('analytics/analytics-tables.html'),
+				templateUrl: RouteHelper.config.basepath('analytics/analyticsTable.html'),
 				controller: 'AnalyticsTableCtrl',
 				controllerAs: 'AnalyticsTableCtrl',
 				resolve: RouteHelper.config.resolveFor('ngTable')
@@ -669,5 +647,27 @@
 				RouteStateSvc.setActiveState(toState.name);
 			}
 		});
+	}
+})();
+(function() {
+	'use strict';
+
+	TranslateConfig.$inject = ["$translateProvider"];
+	angular
+		.module('blocks.translate')
+		.config(TranslateConfig);
+
+	/* ngInject */
+	function TranslateConfig($translateProvider) {
+		$translateProvider.useStaticFilesLoader({
+			prefix: 'dist/i18n/locale-',
+			suffix: '.json'
+		});
+
+		$translateProvider.preferredLanguage('en_US');
+
+		//$translateProvider.useLocalStorage();
+
+		//$translateProvider.useSanitizeValuesStrategy('escaped');
 	}
 })();

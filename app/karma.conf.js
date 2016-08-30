@@ -26,8 +26,7 @@ module.exports = function(config) {
         'modules/**/*.module.js',
         'modules/**/*.ctrl.js',
         'modules/**/*.js',
-        'test/lib/spec-helper.js',
-        'test/lib/state-mock.js',
+        'test/lib/specHelper.js',
         'test/*.spec.js'
     ],
 
