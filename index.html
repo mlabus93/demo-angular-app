@@ -112,6 +112,8 @@
     <span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
   })();</pre></div>
 </li>
+<li><p>There are vendor.json and vendor.base.json config files used for including scripts and libraries. The vendor.json file pulls the specified files from bower_components and copies them to a vendor folder in the dist folder. These files are used for lazyloading modules into the application. The vendor.base.json file includes the script files that are required for the application to initially run. This would include the AngularJS and jQuery libraries, as well as other startup dependencies. These files are concatenated into a base.js file that is placed in the dist/js folder and included in the index.html file.</p></li>
+<li><p>The app folder files get copied to dist with a gulp task that groups them by file types. The js files get concatenated into one file called app.js in the dist/js folder.</p></li>
 </ul>
 
 <h2>
