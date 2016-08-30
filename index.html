@@ -100,6 +100,39 @@
 <h2>
 <a id="project-organization" class="anchor" href="#project-organization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Organization</h2>
 
+<pre><code>    /app
+      /bower_components
+      /modules
+        /feature1
+          feature1.ctrl.js
+          feature1.module.js
+          feature1.html
+        /feature2
+      /style
+        /css
+        /less
+      /test
+        /lib
+          specHelper.js
+        feature1.ctrl.spec.js
+      bower.json
+      gulpfile.js
+      karma.conf.js
+      package.json
+      vendor.base.json
+      vendor.json
+    /dist
+      /css
+      /i18n
+      /js
+        app.js
+        base.js
+      /views
+        /feature1
+          feature1.html
+        /feature2
+</code></pre>
+
 <ul>
 <li><p>There should be a working directory for app development and a directory specific for dist.</p></li>
 <li><p>Inside of the working directory, there should be a folder for features of the project. This folder contains subfolders for all the features and each feature should have it's own module.</p></li>
