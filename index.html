@@ -38,6 +38,7 @@
 <li><a href="#services-and-factories">Services and Factories</a></li>
 <li><a href="#directives">Directives</a></li>
 <li><a href="#unit-tests">Unit Tests</a></li>
+<li><a href="#license">License</a></li>
 </ol>
 
 <h2>
@@ -115,6 +116,24 @@
 <a id="modules" class="anchor" href="#modules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Modules</h2>
 
 <ul>
+<li>
+<p>There should be a main application module for 'glueing' the app together, a core features module for common modules that can be used across apps (angular modules, logger, exception handling, routing, lazyload), and individual features modules for the specific application features.  </p>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app.feature1<span class="pl-pds">'</span></span>, [
+    <span class="pl-s"><span class="pl-pds">'</span>app.core<span class="pl-pds">'</span></span>
+  ]);</pre></div>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app.core<span class="pl-pds">'</span></span>, [
+    <span class="pl-s"><span class="pl-pds">'</span>ngAnimate<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>blocks.logger<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>blocks.exception<span class="pl-pds">'</span></span>
+  ]);</pre></div>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span>, [
+    <span class="pl-s"><span class="pl-pds">'</span>app.core<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>app.feature1<span class="pl-pds">'</span></span>
+  ]);</pre></div>
+</li>
 <li>
 <p>Modules should be defined with setter syntax.</p>
 
@@ -343,6 +362,35 @@
   });</pre></div>
 </li>
 </ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<ul>
+<li>Since this guide includes many practices from John Papa's (<a href="https://github.com/johnpapa" class="user-mention">@johnpapa</a>) guide, I have included his license.</li>
+</ul>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2014-2016 John Papa</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
