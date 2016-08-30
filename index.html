@@ -263,7 +263,9 @@
     <span class="pl-k">var</span> directive <span class="pl-k">=</span> {
       link<span class="pl-k">:</span> link,
       templateUrl<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>vtsCalendar.html<span class="pl-pds">'</span></span>,
-      restrict<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>EA<span class="pl-pds">'</span></span>
+      restrict<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>EA<span class="pl-pds">'</span></span>,
+      controller<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>TestCtrl<span class="pl-pds">'</span></span>,
+      controllerAs<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>TestCtrl<span class="pl-pds">'</span></span>
     };
     <span class="pl-k">return</span> directive;
 
@@ -271,6 +273,7 @@
     }
   }</pre></div>
 </li>
+<li><p>Use controllerAs for directives for consistency (shown above).</p></li>
 </ul>
 
 <h2>
