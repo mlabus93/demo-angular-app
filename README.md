@@ -10,7 +10,7 @@ https://mlabus93.github.io/demo-angular-app/
 ## Installing
 
 - Change into the demo-angular-app directory
-- Run `python setup.py`
+- Run `python setup.py` OR run the bash script setup.sh
 - Then switch to the app directory: `cd app`
 
 ## Build
