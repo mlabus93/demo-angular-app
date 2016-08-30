@@ -353,12 +353,27 @@
       ]
     });</pre></div>
 </li>
+<li><p>Lazyloading insertion into specific states/views is done with a provider included within the router module to allow loading modules/scripts by passing them into a function by name (see below).</p></li>
 </ul>
 
 <h2>
 <a id="routing" class="anchor" href="#routing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Routing</h2>
 
-<p>*** TODO ***</p>
+<ul>
+<li><p>The angular-ui-router is used as the router because of it's added abilities for managing states and nested states.</p></li>
+<li><p>A separate module is created for routing to allow use in other applications.</p></li>
+<li>
+<p>A 'route helper' provider is used for setting the base path to templates and lazyloading modules/scripts.</p>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-c">// NOTE: RouteHelper is injected above to the config function</span>
+  $stateProvider
+    .<span class="pl-en">state</span>(<span class="pl-s"><span class="pl-pds">'</span>dashboard<span class="pl-pds">'</span></span>, {
+      url<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/dashboard<span class="pl-pds">'</span></span>,
+      templateUrl<span class="pl-k">:</span> <span class="pl-smi">RouteHelper</span>.<span class="pl-smi">config</span>.<span class="pl-en">basepath</span>(<span class="pl-s"><span class="pl-pds">'</span>dashboard/dashboard.html<span class="pl-pds">'</span></span>),
+      resolve<span class="pl-k">:</span> <span class="pl-smi">RouteHelper</span>.<span class="pl-smi">config</span>.<span class="pl-en">resolveFor</span>(<span class="pl-s"><span class="pl-pds">'</span>ngTable<span class="pl-pds">'</span></span>)
+    });</pre></div>
+</li>
+</ul>
 
 <h2>
 <a id="unit-tests" class="anchor" href="#unit-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unit Tests</h2>
