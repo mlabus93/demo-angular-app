@@ -221,7 +221,7 @@
 <span class="pl-s">  &lt;/div&gt;</span></pre></div>
 </li>
 <li>
-<p>Use the ui-router to assign controllers to views. If no route is associated with the view, then use the above 'ng-controller' directive.</p>
+<p>Use the ui-router to assign controllers to views. If no route is associated with the view, then use the above 'ng-controller' directive syntax.</p>
 
 <div class="highlight highlight-source-js"><pre>  .<span class="pl-en">state</span>(<span class="pl-s"><span class="pl-pds">'</span>app.home<span class="pl-pds">'</span></span>, {
     url<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/home<span class="pl-pds">'</span></span>,
@@ -231,7 +231,7 @@
   });</pre></div>
 </li>
 <li>
-<p>Use 'controller as' syntax for controller js by binding 'this' to a variable (this isn't used directly because of lexical issues in javascript). This helps prevent the urge to bind everything to $scope.</p>
+<p>Use 'controller as' syntax for controller js files by binding 'this' to a variable (this isn't used directly because of lexical issues in javascript before ES2015 arrow function support). This helps prevent the urge to bind everything to $scope.</p>
 
 <div class="highlight highlight-source-js"><pre>  angular
     .<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app.home<span class="pl-pds">'</span></span>)
