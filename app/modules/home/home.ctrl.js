@@ -17,10 +17,6 @@
 		activate();
 
 		function activate() {
-			DoStuff();
-		}
-
-		function DoStuff() {
 			LoggerSvc.info("Home activated...", null);
 		}
 
