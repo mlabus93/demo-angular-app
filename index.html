@@ -63,8 +63,15 @@
 <code>angular.module('someTestApp', []);</code></p></li>
 <li><p>Submodules should be prefixed with their parent module using dot syntax.<br>
 <code>angular.module('app', ['app.routes']);</code></p></li>
-<li><p>Directives should be prefixed to avoid collisions with future html or angular specs.<br>
+<li><p>Directives should be camel cased and prefixed to avoid collisions with future html or angular specs.<br>
 <code>.directive('vtcCarousel', vtcCarousel) &lt;vtc-carousel&gt; &lt;/vtc-carousel&gt;</code></p></li>
+<li>
+<p>Filters should be camel cased with a suffix of Filter</p>
+
+<blockquote>
+<p>phoneNumberFilter</p>
+</blockquote>
+</li>
 </ul>
 
 <h3>
