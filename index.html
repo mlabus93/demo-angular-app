@@ -156,14 +156,14 @@
 <li>
 <p>There should be a main application module for 'glueing' the app together, a core features module for common modules that can be used across apps (angular modules, logger, exception handling, routing, lazyload), and individual features modules for the specific application features.  </p>
 
-<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app.feature1<span class="pl-pds">'</span></span>, [
-    <span class="pl-s"><span class="pl-pds">'</span>app.core<span class="pl-pds">'</span></span>
-  ]);</pre></div>
-
 <div class="highlight highlight-source-js"><pre>  <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app.core<span class="pl-pds">'</span></span>, [
     <span class="pl-s"><span class="pl-pds">'</span>ngAnimate<span class="pl-pds">'</span></span>,
     <span class="pl-s"><span class="pl-pds">'</span>blocks.logger<span class="pl-pds">'</span></span>,
     <span class="pl-s"><span class="pl-pds">'</span>blocks.exception<span class="pl-pds">'</span></span>
+  ]);</pre></div>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app.feature1<span class="pl-pds">'</span></span>, [
+    <span class="pl-s"><span class="pl-pds">'</span>app.core<span class="pl-pds">'</span></span>
   ]);</pre></div>
 
 <div class="highlight highlight-source-js"><pre>  <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span>, [
