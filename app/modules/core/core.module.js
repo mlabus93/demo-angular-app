@@ -8,6 +8,7 @@
 		'oc.lazyLoad',
 		'ui.router',
 		'pascalprecht.translate',
+		'ngTable',
 		//'ngSanitize',
 		// Reusable cross app core modules
 		'blocks.exception',

@@ -39,7 +39,8 @@ var paths = {
   lib:      'lib/',
   fonts:    'fonts/',
   images:   'images/',
-  i18n:     'i18n/'
+  i18n:     'i18n/',
+  test:     'test/', 
 };
 
 // VENDOR CONFIG
@@ -81,7 +82,8 @@ var source = {
   fonts: [paths.fonts + '*.*'],
   i18n: [paths.i18n + '*.json'],
   images: [paths.images + '*.*'],
-  lib: [paths.lib + '*.js']
+  lib: [paths.lib + '*.js'],
+  tests: [paths.test + '*.spec.js']
 };
 
 // BUILD TARGET CONFIG 
@@ -225,11 +227,28 @@ gulp.task('dist', gulpsync.sync([
   log('****** FINISHED DIST ******');
 });
 
-gulp.task('test', function (done) {
+gulp.task('test:hint', function() {
+  log('Checking test files...');
+  return gulp.src(source.tests)
+    .pipe(gp.jsvalidate())
+    .on('error', handleError)
+    .pipe(gp.jshint())
+    .pipe(gp.jshint.reporter('default'))
+    .pipe(gp.jshint.reporter('fail'));
+})
+
+gulp.task('test:run', function (done) {
     new Server({
         configFile : __dirname + '/karma.conf.js',
         singleRun : true
     }, done).start();
+});
+
+gulp.task('test', gulpsync.sync([
+  'test:hint',
+  'test:run'
+]), function() {
+  log('****** FINISHED TESTS ******');
 });
 
 // Error handler

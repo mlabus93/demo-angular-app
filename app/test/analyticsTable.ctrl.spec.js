@@ -10,10 +10,10 @@ describe('AnalyticsTableCtrl', function() {
 		// Looking for a work around
 	}
 
-	beforeEach(inject(function(_$controller_) {
+	beforeEach(inject(function(_$controller_, _NgTableParams_) {
 		$controller = _$controller_;
 		vm = $controller('AnalyticsTableCtrl', {
-			NgTableParams: mockNgTable
+			NgTableParams: _NgTableParams_
 		});
 	}));
 

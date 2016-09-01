@@ -2,7 +2,6 @@
   "name": "vts-ui-container",
   "version": "0.0.0",
   "authors": [
-    "vts-ui@cisco.com"
   ],
   "license": "MIT",
   "ignore": [

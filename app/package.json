@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "vts-ui@cisco.com",
-  "license": "ISC",
+  "author": "",
+  "license": "MIT",
   "dependencies": {
     "angular-animate": "1.4.2",
     "angular-sanitize": "1.4.4",
